@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Elite | Performance System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN PREMIUM -->
+    <div id="auth-screen" class="auth-wrapper">
+        <div class="login-glow"></div>
+        <div class="auth-card fade-in">
+            <div class="scanner-line"></div>
+            <h1 class="logo-main">NEXUS<span>ELITE</span></h1>
+            <p class="auth-subtitle">SISTEMA DE ALTA PERFORMANCE</p>
+            
+            <div class="auth-form">
+                <div class="input-field">
+                    <label><i class="fas fa-fingerprint"></i> IDENTIFICAÇÃO DO ATLETA</label>
+                    <input type="text" id="user-name" placeholder="Digite seu codinome...">
+                </div>
+                <div class="form-row">
+                    <div class="input-field">
+                        <label>OBJETIVO</label>
+                        <select id="user-goal">
+                            <option value="massa">Ganhar Massa</option>
+                            <option value="emagrecer">Definição</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label>AMBIENTE</label>
+                        <select id="user-location">
+                            <option value="academia">Academia</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="startApp()" class="btn-activate-premium">
+                    INICIAR PROTOCOLO <i class="fas fa-bolt"></i>
+                </button>
+            </div>
+            <p class="version-text">V 2.5.0 - SECURED ACCESS</p>
+        </div>
+    </div>
+
+    <!-- APP PRINCIPAL -->
+    <div id="app-container" class="hidden">
+        <nav class="sidebar">
+            <div class="side-logo">NX<span>E</span></div>
+            <div class="nav-links">
+                <button onclick="showSection('dashboard')" class="nav-item active"><i class="fas fa-th-large"></i><span>Início</span></button>
+                <button onclick="showSection('treinos')" class="nav-item"><i class="fas fa-dumbbell"></i><span>Treinos</span></button>
+                <button onclick="showSection('dietas')" class="nav-item"><i class="fas fa-utensils"></i><span>Dietas</span></button>
+                <button onclick="showSection('maquinas')" class="nav-item"><i class="fas fa-book"></i><span>Máquinas</span></button>
+                <button onclick="showSection('metas')" class="nav-item"><i class="fas fa-check-circle"></i><span>Metas</span></button>
+            </div>
+            <button onclick="logout()" class="logout-btn"><i class="fas fa-power-off"></i></button>
+        </nav>
+
+        <main class="main-content">
+            <div class="container-viewport">
+                
+                <!-- DASHBOARD -->
+                <section id="dashboard" class="page-section slide-up">
+                    <header class="welcome-header">
+                        <h1>Bem-vindo, <span id="display-name" class="text-gradient">Atleta</span></h1>
+                        <div class="xp-card glass">
+                            <div class="xp-data"><span>NÍVEL <b id="lvl-num">1</b></span> <span><b id="xp-val">0</b> / 500 XP</span></div>
+                            <div class="xp-bar"><div id="xp-fill" class="xp-fill"></div></div>
+                        </div>
+                    </header>
+
+                    <div class="dashboard-grid">
+                        <div class="card glass">
+                            <h3><i class="fas fa-utensils text-primary"></i> Dieta Ativa</h3>
+                            <div id="diet-info-dash">
+                                <h2 id="dash-diet-name" class="text-gradient" style="font-size:1.1rem">Nenhum plano selecionado</h2>
+                                <p style="font-size:0.6rem; color:#555">Selecione um protocolo na aba de dietas.</p>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <h3><i class="fas fa-tint text-primary"></i> Hidratação</h3>
+                            <h2 id="water-text" class="stat-val">0 / 3.5L</h2>
+                            <div class="btn-group-row">
+                                <button onclick="addWater(250)" class="btn-mini">+250ml</button>
+                                <button onclick="addWater(500)" class="btn-mini">+500ml</button>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <h3><i class="fas fa-calculator text-primary"></i> Bio-Status</h3>
+                            <div class="inputs-row">
+                                <input type="number" id="imc-h" placeholder="cm">
+                                <input type="number" id="imc-w" placeholder="kg">
+                            </div>
+                            <button onclick="calculateIMC()" class="btn-action-s">Analisar</button>
+                            <div id="imc-res" class="hidden">
+                                <h2 id="imc-val-text" class="text-primary">--</h2>
+                                <p id="imc-status-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TREINOS -->
+                <section id="treinos" class="page-section hidden">
+                    <h2 class="section-title">Cronograma Semanal</h2>
+                    <div id="day-selector" class="day-selector">
+                        <button onclick="selectWorkoutDay(0)" class="day-btn active">SEG</button>
+                        <button onclick="selectWorkoutDay(1)" class="day-btn">TER</button>
+                        <button onclick="selectWorkoutDay(2)" class="day-btn">QUA</button>
+                        <button onclick="selectWorkoutDay(3)" class="day-btn">QUI</button>
+                        <button onclick="selectWorkoutDay(4)" class="day-btn">SEX</button>
+                        <button onclick="selectWorkoutDay(5)" class="day-btn">SAB</button>
+                        <button onclick="selectWorkoutDay(6)" class="day-btn">DOM</button>
+                    </div>
+                    <div id="workout-display" class="workout-focus-card glass slide-up"></div>
+                </section>
+
+                <!-- DIETAS -->
+                <section id="dietas" class="page-section hidden">
+                    <h2 class="section-title">Protocolos Nutricionais <span class="badge-count">17</span></h2>
+                    <div id="diet-grid" class="grid-library"></div>
+                </section>
+
+                <!-- MÁQUINAS -->
+                <section id="maquinas" class="page-section hidden">
+                    <h2 class="section-title">Enciclopédia de Aparelhos <span class="badge-count">30</span></h2>
+                    <div id="machine-list" class="grid-library"></div>
+                </section>
+
+                <!-- METAS -->
+                <section id="metas" class="page-section hidden">
+                    <h2 class="section-title">Missões Diárias</h2>
+                    <div id="metas-list" class="stack-list"></div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL -->
+    <div id="universal-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
