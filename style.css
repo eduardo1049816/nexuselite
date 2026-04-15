@@ -92,3 +92,130 @@ input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-g
 .day-selector { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 15px; }
 .day-btn { min-width: 55px; height: 45px; background: #111; border: 1px solid #222; border-radius: 12px; color: #555; font-size: 0.7rem; font-weight: 800; cursor: pointer; }
 .day-btn.active { color: var(--primary); border-color: var(--primary); background: var(--primary-glow); }
+/* --- ESTILIZAÇÃO DA DIETA NO DASHBOARD --- */
+
+/* Esconde a barra de rolagem feia e cria uma elegante */
+.diet-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+.diet-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.diet-list-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 10px;
+}
+.diet-list-container:hover::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
+/* Estilo de cada linha de refeição */
+.diet-item {
+    background: rgba(255, 255, 255, 0.03); /* Fundo quase transparente */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.diet-item:hover {
+    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: translateX(5px);
+}
+
+/* Estilo de quando você clica e completa a refeição */
+.diet-item.completed {
+    opacity: 0.4;
+    filter: grayscale(1);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+/* --- ESTILIZAÇÃO HIDRATAÇÃO E BIO-STATUS --- */
+
+/* Botões de Água (+250ml e +500ml) */
+.btn-mini {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: var(--primary);
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+    flex: 1; /* Faz os botões dividirem o espaço */
+}
+
+.btn-mini:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary-glow);
+    transform: translateY(-2px);
+}
+
+.btn-group-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Layout dos Inputs de Bio-Status (cm e kg) */
+.inputs-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.inputs-row input {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Resultado do IMC (Efeito de Scanner) */
+#imc-res {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 255, 136, 0.03);
+    border-radius: 15px;
+    border-left: 3px solid var(--primary);
+    animation: fadeIn 0.5s ease;
+}
+
+#imc-val-text {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+#imc-status-text {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: #888;
+}
+
+/* Alerta de Renovação (15 dias) */
+.bio-warning {
+    color: #ff4444 !important;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+.renew-label {
+    font-size: 0.5rem;
+    background: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-weight: 900;
+}
