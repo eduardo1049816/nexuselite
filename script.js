@@ -54,10 +54,116 @@ const nexusDB = {
     dietas: [
         { n: "Bulking Limpo", f: "Massa", icon: "fa-wheat-awn", d: "Ganho de massa com mínimo de gordura.", plano: [{h:"07:30", d:"Tapioca + 3 Ovos + Café"}, {h:"10:30", d:"Fruta + 30g de Whey"}, {h:"13:00", d:"200g Arroz + Frango + Salada"}, {h:"16:30", d:"Iogurte Grego + Aveia"}, {h:"20:00", d:"Macarrão + Carne Moída"}, {h:"22:30", d:"Abacate + Caseína"}] },
         { n: "Cutting Pro", f: "Definição", icon: "fa-fire", d: "Redução de gordura e retenção.", plano: [{h:"08:00", d:"Omelete (3 claras) + Chá Verde"}, {h:"12:30", d:"Tilápia + Brócolis + 1 Batata"}, {h:"16:00", d:"10 Amêndoas + Cafeína"}, {h:"19:30", d:"Frango Grelhado + Mix Folhas"}, {h:"21:30", d:"Whey Isolado"}] },
-        { n: "Low Carb", f: "Gordura", icon: "fa-bacon", d: "Baixo carbo e alta proteína.", plano: [{h:"09:00", d:"Ovos com Bacon"}, {h:"13:00", d:"Carne Vermelha + Salada Verde"}, {h:"16:00", d:"Queijo Branco"}, {h:"20:00", d:"Omelete de Espinafre"}] },
-        // ... (outras dietas ocultas para brevidade, mas você tem todas aí)
-        { n: "Hormonal Fix", f: "Saúde", icon: "fa-dna", d: "Foco em testo.", plano: [{h:"Noite", d:"ZMA + Abacate + Nozes"}] },
-        { n: "Proteína 15 dias", f: "Rápida", icon: "fa-drumstick-bite", d: "Perda rápida.", plano: [{h:"Dia", d:"Foco total em proteínas limpas"}] }
+        { n: "Power Gain", f: "Força", icon: "fa-dumbbell", d: "Foco em força máxima.", plano: [
+  {h:"07:00", d:"Aveia + 4 Claras + 1 Banana"},
+  {h:"10:00", d:"Shake Whey + Pasta de Amendoim"},
+  {h:"13:00", d:"Arroz Integral + Carne Vermelha + Legumes"},
+  {h:"16:00", d:"Batata Doce + Frango"},
+  {h:"19:00", d:"Quinoa + Salmão + Espinafre"},
+  {h:"22:00", d:"Caseína + Castanhas"}
+] },
+{ n: "Lean Muscle", f: "Massa Magra", icon: "fa-seedling", d: "Construção de massa magra.", plano: [
+  {h:"07:30", d:"Smoothie Verde + Whey"},
+  {h:"10:30", d:"Iogurte Natural + Granola"},
+  {h:"13:00", d:"Arroz Integral + Peito de Frango + Salada"},
+  {h:"16:30", d:"Batata Doce + Ovo Cozido"},
+  {h:"20:00", d:"Macarrão Integral + Tilápia"},
+  {h:"22:30", d:"Queijo Cottage + Amêndoas"}
+] },
+{ n: "Shredded Max", f: "Definição", icon: "fa-scissors", d: "Máxima definição muscular.", plano: [
+  {h:"08:00", d:"Ovos Mexidos + Café Preto"},
+  {h:"12:00", d:"Peixe Branco + Brócolis"},
+  {h:"15:30", d:"Shake Whey Isolado"},
+  {h:"18:30", d:"Frango + Mix de Folhas"},
+  {h:"21:00", d:"Claras de Ovo + Chá Verde"}
+] },
+{ n: "Endurance Fuel", f: "Resistência", icon: "fa-running", d: "Energia para treinos longos.", plano: [
+  {h:"06:30", d:"Aveia + Mel + Banana"},
+  {h:"09:30", d:"Shake Whey + Fruta"},
+  {h:"12:30", d:"Arroz + Frango + Legumes"},
+  {h:"15:30", d:"Batata + Ovo"},
+  {h:"18:30", d:"Macarrão Integral + Carne Moída"},
+  {h:"21:30", d:"Iogurte + Granola"}
+] },
+{ n: "Keto Pump", f: "Cetogênica", icon: "fa-bacon", d: "Alta gordura, baixo carbo.", plano: [
+  {h:"07:00", d:"Ovos + Abacate + Café"},
+  {h:"11:00", d:"Queijo + Castanhas"},
+  {h:"14:00", d:"Carne Vermelha + Salada"},
+  {h:"17:00", d:"Ovos Cozidos + Azeite"},
+  {h:"20:00", d:"Salmão + Brócolis"},
+  {h:"23:00", d:"Caseína + Óleo de Coco"}
+] },
+{ n: "Vegan Strong", f: "Vegano", icon: "fa-leaf", d: "Ganho de massa vegano.", plano: [
+  {h:"07:30", d:"Smoothie de Soja + Aveia"},
+  {h:"10:30", d:"Mix de Frutas + Pasta de Amendoim"},
+  {h:"13:00", d:"Quinoa + Grão-de-bico + Salada"},
+  {h:"16:30", d:"Tofu + Batata Doce"},
+  {h:"20:00", d:"Macarrão Integral + Lentilhas"},
+  {h:"22:30", d:"Shake Vegano + Castanhas"}
+] },
+{ n: "Low Carb Cut", f: "Definição", icon: "fa-chart-line", d: "Baixo carbo para secar.", plano: [
+  {h:"08:00", d:"Omelete + Café"},
+  {h:"12:00", d:"Frango + Brócolis"},
+  {h:"15:00", d:"Shake Whey Isolado"},
+  {h:"18:00", d:"Carne Vermelha + Salada"},
+  {h:"21:00", d:"Claras de Ovo + Chá Verde"}
+] },
+{ n: "High Carb Bulk", f: "Massa", icon: "fa-bread-slice", d: "Alto carbo para volume.", plano: [
+  {h:"07:00", d:"Pão Integral + Ovos + Café"},
+  {h:"10:00", d:"Shake Whey + Banana"},
+  {h:"13:00", d:"Arroz + Frango + Legumes"},
+  {h:"16:00", d:"Batata + Carne Moída"},
+  {h:"19:00", d:"Macarrão + Peito de Frango"},
+  {h:"22:00", d:"Aveia + Iogurte"}
+] },
+{ n: "Mediterranean Fit", f: "Saúde", icon: "fa-fish", d: "Estilo mediterrâneo para performance.", plano: [
+  {h:"07:30", d:"Iogurte + Mel + Frutas"},
+  {h:"10:30", d:"Oleaginosas + Chá"},
+  {h:"13:00", d:"Peixe + Arroz Integral + Salada"},
+  {h:"16:30", d:"Pão Integral + Azeite + Tomate"},
+  {h:"20:00", d:"Frango + Mix de Legumes"},
+  {h:"22:30", d:"Queijo Cottage + Uvas"}
+] },
+{ n: "Gluten Free Gain", f: "Massa", icon: "fa-wheat-awn-circle-exclamation", d: "Plano sem glúten.", plano: [
+  {h:"07:00", d:"Tapioca + Ovos"},
+  {h:"10:00", d:"Shake Whey + Frutas"},
+  {h:"13:00", d:"Arroz + Frango + Legumes"},
+  {h:"16:00", d:"Batata Doce + Queijo"},
+  {h:"19:00", d:"Quinoa + Carne Moída"},
+  {h:"22:00", d:"Iogurte + Castanhas"}
+] },
+{ n: "Morning Warrior", f: "Energia", icon: "fa-sun", d: "Foco em treinos matinais.", plano: [
+  {h:"06:00", d:"Aveia + Whey + Café"},
+  {h:"09:00", d:"Banana + Pasta de Amendoim"},
+  {h:"12:00", d:"Arroz + Frango + Legumes"},
+  {h:"15:00", d:"Batata + Ovo"},
+  {h:"18:00", d:"Macarrão Integral + Tilápia"},
+  {h:"21:00", d:"Caseína + Castanhas"}
+] },
+{ n: "Night Builder", f: "Massa", icon: "fa-moon", d: "Plano para treinos noturnos.", plano: [
+  {h:"09:00", d:"Smoothie + Aveia"},
+  {h:"12:00", d:"Arroz + Carne Vermelha + Legumes"},
+  {h:"15:00", d:"Shake Whey + Fruta"},
+  {h:"18:00", d:"Batata + Frango"},
+  {h:"21:00", d:"Macarrão Integral + Salmão"},
+  {h:"23:30", d:"Caseína + Amêndoas"}
+] },
+{ n: "Protein Boost", f: "Proteína", icon: "fa-egg", d: "Alta ingestão proteica.", plano: [
+  {h:"07:00", d:"Ovos + Café"},
+  {h:"10:00", d:"Shake Whey + Fruta"},
+  {h:"13:00", d:"Frango + Arroz + Legumes"},
+  {h:"16:00", d:"Iogurte + Granola"},
+  {h:"19:00", d:"Carne Vermelha + Salada"},
+  {h:"22:00", d:"Caseína + Castanhas"}
+] },
+{ n: "Balanced Fit", f: "Equilíbrio", icon: "fa-balance-scale", d: "Plano equilibrado para saúde e estética.", plano: [
+  {h:"07:30", d:"Aveia + Frutas + Café"},
+  {h:"10:30", d:"Iogurte + Granola"},
+  {h:"13:00", d:"Arroz Integral + Frango + Legumes"},
+  {h:"16:30", d:"Batata + Ovo"},
+  {h:"20:00", d:"Macarrão Integral + Peixe"},
+  {h:"22:30", d:"Queijo Cottage + Castanhas"}
+] },
     ],
     treinos: {
         academia_massa: [
