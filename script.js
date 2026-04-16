@@ -187,13 +187,99 @@ let user = {
     lastBioDate: null 
 };
 
+// --- LOGICA DE PATENTES / MEDALHAS ---
+const ranks = [
+    { minLvl: 1, name: "DESPERTO", img: "https://png.pngtree.com/element_our/sm/20180620/sm_5b29c1a236a02.png", class: "rank-desperto" },
+    { minLvl: 5, name: "INICIADO", img: "https://th.bing.com/th/id/R.120d95a5fa3df4b45c30aa2b0804f9e9?rik=s9yCkkTnQTUlkg&pid=ImgRaw&r=0", class: "rank-iniciado" },
+    { minLvl: 10, name: "FORJADO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-forjado" },
+    { minLvl: 20, name: "ASCENDENTE", img: "COLE_O_LINK_AQUI.jpg", class: "rank-ascendente" },
+    { minLvl: 40, name: "GUARDIÃO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-guardião" },
+    { minLvl: 60, name: "EXECUTOR", img: "COLE_O_LINK_AQUI.jpg", class: "rank-executor" },
+    { minLvl: 80, name: "TITANICO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-titânico" },
+    { minLvl: 100, name: "IMORTAL", img: "COLE_O_LINK_AQUI.jpg", class: "rank-imortal" },
+    { minLvl: 150, name: "TRANSCENDENTE", img: "COLE_O_LINK_AQUI.jpg", class: "rank-transcendente" },
+    { minLvl: 200, name: "DIVINO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-divino" },
+    { minLvl: 400, name: "DEUS", img: "https://pt.vecteezy.com/arte-vetorial/36278211-fisiculturista-icone-homem-silhueta-do-uma-forte-homem-atleta-icone-corpo-construcao-musculos-vetor-ilustracao", class: "rank-deus" }
+];
+
+function updateRankUI() {
+    const currentRank = [...ranks].reverse().find(r => user.lvl >= r.minLvl) || ranks[0];
+    const container = document.getElementById('rank-display');
+    if (container) {
+        container.innerHTML = `
+            <div class="rank-badge ${currentRank.class}" onclick="openRankModal()" 
+                 style="cursor: pointer; display: flex; align-items: center; gap: 15px; padding: 12px 20px; border-radius: 15px;">
+                
+                <!-- IMAGEM GRANDE NO DASHBOARD -->
+                <img src="${currentRank.img}" style="width: 50px; height: 50px; object-fit: contain; border-radius: 8px; background: rgba(255,255,255,0.05); padding: 5px;">
+                
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 0.6rem; color: #888; letter-spacing: 1px; text-transform: uppercase;">Patente Atual</span>
+                    <span style="font-size: 1rem; font-weight: 900; letter-spacing: 2px; color: #fff;">${currentRank.name}</span>
+                </div>
+                
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin-left: auto; opacity: 0.5;"></i>
+            </div>
+        `;
+    }
+}
+
+function openRankModal() {
+    const modalBody = document.getElementById('modal-body');
+    
+    const rankListHtml = ranks.map(r => {
+        const alcancado = user.lvl >= r.minLvl;
+        const statusStyle = alcancado ? '' : 'style="opacity: 0.2; filter: grayscale(1);"';
+        const checkIcon = alcancado 
+            ? '<i class="fas fa-check-circle" style="color: var(--primary); font-size: 1.1rem;"></i>' 
+            : `<span style="font-size: 0.7rem; color: #444; font-weight: 800;">Lvl ${r.minLvl}</span>`;
+        
+        return `
+            <div class="exercise-row" ${statusStyle} style="display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; margin-bottom: 8px; background: rgba(255,255,255,0.02); border-radius: 12px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <!-- Container da imagem centralizado -->
+                    <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); border-radius: 10px; flex-shrink: 0;">
+                        <img src="${r.img}" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                    </div>
+                    
+                    <!-- Texto centralizado verticalmente -->
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <div style="font-weight: 800; font-size: 0.9rem; color: #fff; line-height: 1;">${r.name}</div>
+                        <div style="font-size: 0.6rem; color: #666; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Requisito: Nível ${r.minLvl}</div>
+                    </div>
+                </div>
+                
+                <!-- Status (Check ou Lvl) centralizado -->
+                <div style="display: flex; align-items: center; justify-content: center; min-width: 30px;">
+                    ${checkIcon}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    modalBody.innerHTML = `
+        <h2 class="text-gradient" style="font-family: 'Syncopate'; font-size: 1.2rem; margin-bottom: 20px; text-align: center; width: 100%;">Hierarquia Nexus</h2>
+        
+        <div class="rank-list-container" style="padding-right: 5px; max-height: 400px; overflow-y: auto;">
+            ${rankListHtml}
+        </div>
+        
+        <button onclick="closeModal()" class="btn-action-s" style="margin-top: 20px; width: 100%; height: 50px; font-weight: 900;">VOLTAR AO TREINO</button>
+    `;
+    
+    document.getElementById('universal-modal').classList.remove('hidden');
+}
+
+// ------------------------------
+
 function startApp() {
     const name = document.getElementById('user-name').value;
     if(!name) return alert("Digite seu codinome de atleta!");
     document.getElementById('auth-screen').classList.add('hidden');
     document.getElementById('app-container').classList.remove('hidden');
     document.getElementById('display-name').innerText = name;
-    updateWaterUI(); // Atualiza o visual da água ao iniciar
+    updateWaterUI(); 
+    updateRankUI();  
     renderAll();
 }
 
@@ -314,13 +400,16 @@ function selectWorkoutDay(idx) {
 
 function addXP(v) {
     user.xp += v;
-    if(user.xp >= 500) { user.lvl++; user.xp = 0; }
+    if(user.xp >= 500) { 
+        user.lvl++; 
+        user.xp = 0; 
+    }
     document.getElementById('xp-fill').style.width = (user.xp / 500 * 100) + "%";
     document.getElementById('lvl-num').innerText = user.lvl;
     document.getElementById('xp-val').innerText = user.xp;
+    updateRankUI(); 
 }
 
-// HIDRATAÇÃO DINÂMICA
 function addWater(ml) {
     user.water += ml;
     updateWaterUI();
@@ -333,7 +422,6 @@ function updateWaterUI() {
     document.getElementById('water-text').innerText = `${currentL} / ${goalL}L`;
 }
 
-// BIO-STATUS COM RENOVAÇÃO DE 15 DIAS
 function calculateIMC() {
     const hInput = document.getElementById('imc-h').value;
     const wInput = document.getElementById('imc-w').value;
@@ -344,7 +432,6 @@ function calculateIMC() {
     const w = parseFloat(wInput);
     const imc = (w / (h * h)).toFixed(1);
 
-    // Salva evolução e define meta de água (35ml por kg)
     user.waterGoal = Math.round(w * 35);
     user.lastBioDate = new Date();
 
