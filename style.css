@@ -219,3 +219,124 @@ input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-g
     margin-left: 5px;
     font-weight: 900;
 }
+/* SISTEMA DE PATENTES */
+.rank-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+}
+
+.medal-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* Cores das Patentes */
+.rank-recruta { color: #855e42; } /* Bronze */
+.rank-soldado { color: #a5a5a5; } /* Prata */
+.rank-elite { color: #ffcc00; }   /* Ouro */
+.rank-mestre { color: #00d4ff; }  /* Platina */
+.rank-lenda { color: #ff00ff; }   /* Diamante */
+.rank-nexus { color: var(--primary); font-weight: 900; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+    0% { filter: drop-shadow(0 0 2px var(--primary)); }
+    50% { filter: drop-shadow(0 0 10px var(--primary)); }
+    100% { filter: drop-shadow(0 0 2px var(--primary)); }
+}
+/* --- AJUSTES PARA TORNAR A PATENTE UM BOTÃO CLICÁVEL --- */
+
+.rank-badge {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.rank-badge:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito de clique (diminui levemente) */
+.rank-badge:active {
+    transform: scale(0.98);
+}
+
+/* --- ESTILO DA LISTA DE PATENTES DENTRO DO MODAL --- */
+
+.rank-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.rank-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+/* Destaque para a patente que você já alcançou */
+.rank-row.attained {
+    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 255, 136, 0.2);
+}
+
+/* Estilo para patentes bloqueadas (que você ainda não tem nível) */
+.rank-row.locked {
+    opacity: 0.4;
+    filter: grayscale(1);
+}
+
+.rank-info-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rank-info-text {
+    text-align: left;
+}
+
+.rank-info-text h4 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.rank-info-text small {
+    font-size: 0.6rem;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.rank-status-icon {
+    font-size: 0.8rem;
+}
+
+/* Barra de rolagem do Modal (estilo Nexus) */
+.modal-content::-webkit-scrollbar {
+    width: 4px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
