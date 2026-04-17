@@ -189,17 +189,17 @@ let user = {
 
 // --- LOGICA DE PATENTES / MEDALHAS ---
 const ranks = [
-    { minLvl: 1, name: "DESPERTO", img: "https://png.pngtree.com/element_our/sm/20180620/sm_5b29c1a236a02.png", class: "rank-desperto" },
-    { minLvl: 5, name: "INICIADO", img: "https://th.bing.com/th/id/R.120d95a5fa3df4b45c30aa2b0804f9e9?rik=s9yCkkTnQTUlkg&pid=ImgRaw&r=0", class: "rank-iniciado" },
-    { minLvl: 10, name: "FORJADO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-forjado" },
-    { minLvl: 20, name: "ASCENDENTE", img: "COLE_O_LINK_AQUI.jpg", class: "rank-ascendente" },
-    { minLvl: 40, name: "GUARDIÃO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-guardião" },
-    { minLvl: 60, name: "EXECUTOR", img: "COLE_O_LINK_AQUI.jpg", class: "rank-executor" },
-    { minLvl: 80, name: "TITANICO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-titânico" },
-    { minLvl: 100, name: "IMORTAL", img: "COLE_O_LINK_AQUI.jpg", class: "rank-imortal" },
-    { minLvl: 150, name: "TRANSCENDENTE", img: "COLE_O_LINK_AQUI.jpg", class: "rank-transcendente" },
-    { minLvl: 200, name: "DIVINO", img: "COLE_O_LINK_AQUI.jpg", class: "rank-divino" },
-    { minLvl: 400, name: "DEUS", img: "https://pt.vecteezy.com/arte-vetorial/36278211-fisiculturista-icone-homem-silhueta-do-uma-forte-homem-atleta-icone-corpo-construcao-musculos-vetor-ilustracao", class: "rank-deus" }
+    { minLvl: 1, name: "DESPERTO", img: "https://tmntmutantmadness.zendesk.com/hc/article_attachments/360075440431/pvp_badge_3c.png", class: "rank-desperto" },
+    { minLvl: 5, name: "INICIADO", img: "https://tmntmutantmadness.zendesk.com/hc/article_attachments/360075227552/pvp_badge_5c.png", class: "rank-iniciado" },
+    { minLvl: 10, name: "FORJADO", img: "https://tmntmutantmadness.zendesk.com/hc/article_attachments/360075227692/pvp_badge_7e.png", class: "rank-forjado" },
+    { minLvl: 20, name: "ASCENDENTE", img: "https://tmntmutantmadness.zendesk.com/hc/article_attachments/360075227612/pvp_badge_6d.png", class: "rank-ascendente" },
+    { minLvl: 40, name: "GUARDIÃO", img: "https://cdn3.emoji.gg/emojis/53034-grandchampion3.png", class: "rank-guardião" },
+    { minLvl: 60, name: "EXECUTOR", img: "https://warcraft.wiki.gg/images/2/2c/FlamesRadiance-MajorFactionsIcons.png?f6ff86", class: "rank-executor" },
+    { minLvl: 80, name: "TITANICO", img: "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/291480/005c6ccbccb105b36a60b03145185e9ecbfd4e14.jpg", class: "rank-titânico" },
+    { minLvl: 100, name: "IMORTAL", img: "https://th.bing.com/th/id/R.6231d334bc26de4e8ad374459825d9c9?rik=yo6uNUtpxhFExw&riu=http%3a%2f%2fobsoletegamer.com%2fwp-content%2fuploads%2f2010%2f06%2fwar_logo.jpg&ehk=95ZkVpszPfDGzAWOrpkNjkqRSIt3fru274lR%2blIrqVQ%3d&risl=&pid=ImgRaw&r=0", class: "rank-imortal" },
+    { minLvl: 150, name: "TRANSCENDENTE", img: "https://staticdelivery.nexusmods.com/mods/3474/images/thumbnails/8807/8807-1713320416-1564014932.png", class: "rank-transcendente" },
+    { minLvl: 200, name: "DIVINO", img: "https://storage.ko-fi.com/cdn/useruploads/37353d5b-214e-4d1d-acef-265067ef0c8e_c03f4d14-ddbc-48ff-b7cb-b19366af81b4.png", class: "rank-divino" },
+    { minLvl: 400, name: "DEUS", img: "https://i.pinimg.com/736x/f5/d8/9f/f5d89f712b833a9cfa7ae5228b29466c.jpg", class: "rank-deus" }
 ];
 
 function updateRankUI() {
